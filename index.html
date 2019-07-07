@@ -14,7 +14,10 @@
     <h1>FlickList</h1>
     <p>Keep a list of all the movies you've been meaning to watch.</p>
   </header>
-
+  <form id="form-search">
+    <input id="textBox" type="text"> 
+    <input id="submitbutton" type="submit" value="Search">
+  </form>
   <section id="section-watchlist">
     <header>
       <h2>My Watchlist</h2>
@@ -27,8 +30,9 @@
   <section id="section-browse">
     <header>
       <h2>Browse Movies</h2>
+   
       <!-- 
-      TODO 6
+      TODO 6 done
       add a <form> here for users to search for movies by title 
       -->
 
@@ -43,13 +47,13 @@
     // TODO 8
     // fill in the missing pieces of the code below
 
-    $("TODO 8a").submit(function(evt) {
+    $("searchMovies").submit(function(evt) {
 
       // first, we cancel the default action (which would leave the page)
       evt.preventDefault();
 
       // figure out what the user typed
-      var searchTerm = $("TODO 8b").val();
+      var searchTerm = $("searchMovies").val();
 
       // TODO 8c invoke the searchMovies function,
       // passing in the search term, and render as the callback

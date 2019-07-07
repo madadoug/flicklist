@@ -14,7 +14,7 @@ var model = {
 
 var api = {
   root: "https://api.themoviedb.org/3",
-  token: "8e888fa39ec243e662e1fb738c42ae99" // TODO 0 add your api key
+  token: "7de13a6b1095d4cf1b2017cae1981f99" // TODO 0 add your api key
 }
 
 
@@ -72,13 +72,13 @@ function render() {
       .append(title)
       // TODO 3
       // give itemView a class attribute of "item-watchlist"
-
+	  .attr('class','item-watchlist')
     $("#section-watchlist ul").append(itemView);
   });
 
   // insert browse items
   model.browseItems.forEach(function(movie) {
-    var title = $("<h4></h4>").text(movie.original_title);
+	var title = $("<h4></h4>").text(movie.original_title);
     var button = $("<button></button>")
       .text("Add to Watchlist")
       .click(function() {
@@ -88,19 +88,31 @@ function render() {
       // TODO 2
       // the button should be disabled if this movie is already in
       // the user's watchlist
-      // see jQuery .prop() and Array.indexOf()
+	  // see jQuery .prop() and Array.indexOf()
+	  if(model.watchlistItems.indexOf(movie)!=-1)
+	  {
+ button.prop("disabled",true);
+	  }	
+	  //button.indexOf(0)
+	 // var button = $("<button></button>");
+		//button.prop("disabled", true);
+	
 
 
     // TODO 1
     // create a paragraph containing the movie object's .overview value
     // then, in the code block below,
-    // append the paragraph in between the title and the button
-
+	// append the paragraph in between the title and the button
+	//$("<p></p>").add(movie.overview);
+	$("#section-browse p").append(movie.overview);
+	console.log(JSON.stringify(movie));
+	
 
     // append everything to itemView, along with an <hr/>
     var itemView = $("<li></li>")
-      .append($("<hr/>"))
-      .append(title)
+	  .append(title)
+	  .append(movie.overview)
+	  .append($("<hr/>"))
       .append(button);
 
     // append the itemView to the list
